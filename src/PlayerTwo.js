@@ -5,7 +5,8 @@ class PlayerTwo extends React.Component {
 	render() {
 		return (
 			<div>
-				PlayerTwo
+			<h1>Player Two</h1>
+				<p>Name { this.props.name }</p>
 			</div>
 		)
 	}
