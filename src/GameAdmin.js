@@ -10,6 +10,9 @@ class GameAdmin extends React.Component {
 
 		playerOneButton: "Play",
 		playerTwoButton: "Play",
+
+		playerOneButtonClicked: 0,
+		playerTwoButtonClicked: 0,
 	}
 
 	changeName = (event) => {
@@ -20,12 +23,14 @@ class GameAdmin extends React.Component {
 
 	play = (event) => {
 		const targetButton = event.target.id;
+		const playedTimes = this.state[targetButton+"Clicked"] + 1;
 
 		if(this.state[targetButton]==="Play") {
 			this.setState({
 				playerOneButton: "Play",
 				playerTwoButton: "Play",
-				[targetButton]: "This user is playing now"
+				[targetButton]: "This user is playing now",
+				[targetButton+"Clicked"]: playedTimes
 			})
 		} else {
 			this.setState({
@@ -38,8 +43,10 @@ class GameAdmin extends React.Component {
 	render() {
 		return (
 			<div>
-				<PlayerOne name={ this.state.playerOneName } buttonContent={this.state.playerOneButton } play={ this.play } />
-				<PlayerTwo name={ this.state.playerTwoName } buttonContent={this.state.playerTwoButton } play={ this.play } />
+				<PlayerOne name={ this.state.playerOneName } buttonContent={this.state.playerOneButton }
+						play={ this.play } playedTimes={ this.state.playerOneButtonClicked } />
+				<PlayerTwo name={ this.state.playerTwoName } buttonContent={this.state.playerTwoButton }
+						play={ this.play } playedTimes={ this.state.playerTwoButtonClicked } />
 
 				<label htmlFor="playerOneInput">Set Name of Player One: </label>
 				<input type="text" name="playerOneName" id="playerOneInput" onChange={ this.changeName }/> <br/>
