@@ -41,6 +41,20 @@ class GameAdmin extends React.Component {
 	}
 
 	render() {
+
+		const containerStyle = {
+			margin: '2% 5%',
+
+			display: 'grid',
+			gridTemplate: '30px 30px / 230px auto',
+			gap: '3px',
+		}
+
+		const labelStyle = {
+			fontSize: '120%',
+			fontWeight: 'bold'
+		}
+
 		return (
 			<div>
 				<PlayerOne name={ this.state.playerOneName } buttonContent={this.state.playerOneButton }
@@ -48,11 +62,14 @@ class GameAdmin extends React.Component {
 				<PlayerTwo name={ this.state.playerTwoName } buttonContent={this.state.playerTwoButton }
 						play={ this.play } playedTimes={ this.state.playerTwoButtonClicked } />
 
-				<label htmlFor="playerOneInput">Set Name of Player One: </label>
-				<input type="text" name="playerOneName" id="playerOneInput" onChange={ this.changeName }/> <br/>
+				<div style={ containerStyle }>
+					<label style={ labelStyle } htmlFor="playerOneInput">Set Name of Player One: </label>
+					<input type="text" name="playerOneName" id="playerOneInput" onChange={ this.changeName }/>
 
-				<label htmlFor="playerTwoInput">Set Name of Player Two: </label>
-				<input type="text" name="playerTwoName" id="playerTwoInput" onChange={ this.changeName }/>
+					<label style={ labelStyle } htmlFor="playerTwoInput">Set Name of Player Two: </label>
+					<input type="text" name="playerTwoName" id="playerTwoInput" onChange={ this.changeName }/>
+				</div>
+				
 			</div>
 		)
 	}
